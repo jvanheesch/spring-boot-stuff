@@ -17,12 +17,24 @@
 
     <modules>
         <module>simple</module>
+        <module>jasypt</module>
     </modules>
 
     <properties>
         <java.language.version>8</java.language.version>
         <maven-compiler-plugin.version>3.7.0</maven-compiler-plugin.version>
+        <jasypt-spring-boot-starter.version>2.1.0</jasypt-spring-boot-starter.version>
     </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.github.ulisesbocchio</groupId>
+                <artifactId>jasypt-spring-boot-starter</artifactId>
+                <version>${jasypt-spring-boot-starter.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
     <dependencies>
         <dependency>
