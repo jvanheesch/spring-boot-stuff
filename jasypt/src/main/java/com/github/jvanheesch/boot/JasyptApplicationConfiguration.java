@@ -13,7 +13,7 @@ import org.springframework.core.env.AbstractEnvironment;
  * See https://www.baeldung.com/spring-boot-jasypt
  */
 @Configuration
-public class ApplicationConfiguration {
+public class JasyptApplicationConfiguration {
     @Bean(name = "encryptorBean")
     public StringEncryptor stringEncryptor() {
         PooledPBEStringEncryptor encryptor = new PooledPBEStringEncryptor();
