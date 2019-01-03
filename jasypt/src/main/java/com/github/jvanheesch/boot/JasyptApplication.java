@@ -6,8 +6,8 @@ import org.springframework.context.annotation.Import;
 
 @SpringBootApplication
 @Import(JasyptApplicationConfiguration.class)
-public class Application {
+public class JasyptApplication {
     public static void main(String[] args) {
-        SpringApplication.run(Application.class, args);
+        SpringApplication.run(JasyptApplication.class, args);
     }
 }
