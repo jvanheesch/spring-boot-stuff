@@ -20,4 +20,11 @@ public class JasyptApplicationConfiguration {
         System.out.println(environment.getPropertySources());
         return null;
     }
+
+    @Bean
+    public Object testJasyptAutoConfigure(AbstractEnvironment environment, @Value("${key}") String decryptedValue) {
+        System.out.println(environment.getProperty("key"));
+        System.out.println(decryptedValue);
+        return null;
+    }
 }
