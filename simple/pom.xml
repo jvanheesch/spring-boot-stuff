@@ -12,6 +12,11 @@
 
     <artifactId>simple</artifactId>
 
+    <properties>
+        <!--see spring-boot-starter-parent.pom-->
+        <start-class>com.github.jvanheesch.boot.Application</start-class>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -22,4 +27,13 @@
             <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
     </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
 </project>
