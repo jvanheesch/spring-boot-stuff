@@ -19,6 +19,7 @@
         <module>simple</module>
         <module>jasypt</module>
         <module>profile-specific-autoconfiguration</module>
+        <module>jersey</module>
     </modules>
 
     <properties>
