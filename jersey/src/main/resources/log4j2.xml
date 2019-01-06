@@ -12,7 +12,7 @@
         <Logger name="org.apache" level="warn" additivity="false">
             <AppenderRef ref="Console"/>
         </Logger>
-        <Logger name="com.github.jvanheesch" level="info" additivity="false">
+        <Logger name="com.github.jvanheesch" level="trace" additivity="false">
             <AppenderRef ref="Console"/>
         </Logger>
     </Loggers>
