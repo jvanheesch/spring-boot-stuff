@@ -9,7 +9,7 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
 @Controller
-@Path("/rule")
+    @Path("/rule")
 public class JaxRsEndpoint {
 
     @GET
@@ -18,6 +18,17 @@ public class JaxRsEndpoint {
         return Response.status(Status.OK).entity("jax ws").build();
     }
 
+    @POST
+    @Path("/post")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response postEndpoint(MyEntity myEntity) {
+        return Response.status(Status.OK).entity(myEntity).build();
+    }
+
+    /**
+     * curl --header "Content-Type: application/json" --request POST --data '{"someString": "abc"}' localhost:8080/jersey/rule/post
+     */
     @GET
     @Path("getPath")
     @Consumes(MediaType.APPLICATION_JSON)
@@ -28,6 +39,9 @@ public class JaxRsEndpoint {
 
     private static class MyEntity {
         private String someString;
+
+        public MyEntity() {
+        }
 
         public MyEntity(String someString) {
             this.someString = someString;
