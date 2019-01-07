@@ -17,5 +17,6 @@ public class JerseyConfig extends ResourceConfig {
     private void registerEndpoints() {
         register(HelloWorldEndpoint.class);
         register(JaxRsEndpoint.class);
+        register(JaxRsConsumesIngoredEndpoint.class);
     }
 }

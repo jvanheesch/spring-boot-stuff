@@ -29,50 +29,6 @@ public class JaxRsEndpoint {
         return Response.status(Status.OK).entity(myEntity).build();
     }
 
-    /**
-     * Works without "Content-Type: application/json" header.
-     * curl localhost:8080/jersey/rule?id=10
-     */
-    @GET
-    @Consumes(MediaType.APPLICATION_JSON)
-    @Produces(MediaType.APPLICATION_JSON)
-    public Response get(@QueryParam("id") Long id) {
-        return Response.ok().entity(new MyEntity(String.valueOf(id))).build();
-    }
-
-    /**
-     * Works without "Content-Type: application/json" header.
-     * curl --request DELETE localhost:8080/jersey/rule?id=10
-     */
-    @DELETE
-    @Consumes(MediaType.APPLICATION_JSON)
-    @Produces(MediaType.APPLICATION_JSON)
-    public Response delete(@QueryParam("id") Long id) {
-        return Response.ok().entity(new MyEntity(String.valueOf(id))).build();
-    }
-
-    /**
-     * Works without "Content-Type: application/json" header.
-     * curl --request POST localhost:8080/jersey/rule?id=10
-     */
-    @POST
-    @Consumes(MediaType.APPLICATION_JSON)
-    @Produces(MediaType.APPLICATION_JSON)
-    public Response post(@QueryParam("id") Long id) {
-        return Response.ok().entity(new MyEntity(String.valueOf(id))).build();
-    }
-
-    /**
-     * Works without "Content-Type: application/json" header.
-     * curl --request PUT localhost:8080/jersey/rule?id=10
-     */
-    @PUT
-    @Consumes(MediaType.APPLICATION_JSON)
-    @Produces(MediaType.APPLICATION_JSON)
-    public Response put(@QueryParam("id") Long id) {
-        return Response.ok().entity(new MyEntity(String.valueOf(id))).build();
-    }
-
     private static class MyEntity {
         private String someString;
 
