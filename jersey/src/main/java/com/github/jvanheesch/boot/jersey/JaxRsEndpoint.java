@@ -31,10 +31,9 @@ public class JaxRsEndpoint {
 
     /**
      * Works without "Content-Type: application/json" header.
-     * curl localhost:8080/jersey/rule/get?id=10
+     * curl localhost:8080/jersey/rule?id=10
      */
     @GET
-    @Path("get")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response get(@QueryParam("id") Long id) {
@@ -43,10 +42,9 @@ public class JaxRsEndpoint {
 
     /**
      * Works without "Content-Type: application/json" header.
-     * curl --request DELETE localhost:8080/jersey/rule/delete?id=10
+     * curl --request DELETE localhost:8080/jersey/rule?id=10
      */
     @DELETE
-    @Path("delete")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response delete(@QueryParam("id") Long id) {
@@ -55,10 +53,9 @@ public class JaxRsEndpoint {
 
     /**
      * Works without "Content-Type: application/json" header.
-     * curl --request POST localhost:8080/jersey/rule/post?id=10
+     * curl --request POST localhost:8080/jersey/rule?id=10
      */
     @POST
-    @Path("post")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response post(@QueryParam("id") Long id) {
@@ -67,10 +64,9 @@ public class JaxRsEndpoint {
 
     /**
      * Works without "Content-Type: application/json" header.
-     * curl --request PUT localhost:8080/jersey/rule/put?id=10
+     * curl --request PUT localhost:8080/jersey/rule?id=10
      */
     @PUT
-    @Path("put")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response put(@QueryParam("id") Long id) {
