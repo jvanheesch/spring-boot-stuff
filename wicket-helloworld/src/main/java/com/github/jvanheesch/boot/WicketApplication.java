@@ -48,7 +48,8 @@ public class WicketApplication extends WebApplication {
     public Supplier<String> requestScopeString() {
         System.out.println("WicketApplication.requestScopeString");
 
-        return () -> "abc";
+        Object o = new Object();
+        return o::toString;
     }
 
     @Bean
@@ -56,14 +57,16 @@ public class WicketApplication extends WebApplication {
     public Supplier<String> sessionScopeString() {
         System.out.println("WicketApplication.sessionScopeString");
 
-        return () -> "def";
+        Object o = new Object();
+        return o::toString;
     }
 
     @Bean
     public Supplier<String> singletonScopeString() {
         System.out.println("WicketApplication.singletonScopeString");
 
-        return () -> "ghi";
+        Object o = new Object();
+        return o::toString;
     }
 
     @Override
