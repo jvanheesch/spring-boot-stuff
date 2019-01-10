@@ -20,6 +20,7 @@
         <module>jasypt</module>
         <module>profile-specific-autoconfiguration</module>
         <module>jersey</module>
+        <module>wicket-helloworld</module>
     </modules>
 
     <properties>
