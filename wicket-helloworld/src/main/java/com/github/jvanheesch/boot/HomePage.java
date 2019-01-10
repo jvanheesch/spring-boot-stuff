@@ -11,7 +11,5 @@ public class HomePage extends WebPage {
         super.onInitialize();
 
         this.add(new Label("message", new HomePageModel()));
-
-        this.add(new LoginPanel("loginPanel"));
     }
 }
