@@ -4,17 +4,15 @@ import org.apache.wicket.injection.Injector;
 import org.apache.wicket.model.LoadableDetachableModel;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 
-import java.util.function.Supplier;
-
 public class HomePageModel extends LoadableDetachableModel<String> {
     private static final long serialVersionUID = 3671591196001641047L;
 
-    @SpringBean(name = "requestScopeString")
-    private Supplier<String> requestScopeString;
-    @SpringBean(name = "sessionScopeString")
-    private Supplier<String> sessionScopeString;
-    @SpringBean(name = "singletonScopeString")
-    private Supplier<String> singletonScopeString;
+    @SpringBean(name = "requestScopeObject")
+    private Stringable requestScopeObject;
+    @SpringBean(name = "sessionScopeObject")
+    private Stringable sessionScopeObject;
+    @SpringBean(name = "singletonScopeObject")
+    private Stringable singletonScopeObject;
 
     public HomePageModel() {
         Injector.get().inject(this);
@@ -22,6 +20,6 @@ public class HomePageModel extends LoadableDetachableModel<String> {
 
     @Override
     protected String load() {
-        return requestScopeString.get() + sessionScopeString.get() + singletonScopeString.get();
+        return requestScopeObject.asString() + sessionScopeObject.asString() + singletonScopeObject.asString();
     }
 }
