@@ -1,13 +1,11 @@
 package com.github.jvanheesch.boot;
 
-import org.apache.wicket.Session;
 import org.apache.wicket.authroles.authentication.AuthenticatedWebSession;
 import org.apache.wicket.authroles.authorization.strategies.role.Roles;
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.protocol.http.WebApplication;
 import org.apache.wicket.protocol.http.WicketFilter;
 import org.apache.wicket.request.Request;
-import org.apache.wicket.request.Response;
 import org.apache.wicket.spring.injection.annot.SpringComponentInjector;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -67,29 +65,6 @@ public class WicketApplication extends WebApplication {
 
         Object o = new Object();
         return o::toString;
-    }
-
-    @Override
-    public Session newSession(Request request, Response response) {
-        return new MyWebSession(request);
-    }
-
-    public static class MyWebSession extends AuthenticatedWebSession {
-        MyWebSession(Request request) {
-            super(request);
-
-            System.out.println("MyWebSession.MyWebSession");
-        }
-
-        @Override
-        public Roles getRoles() {
-            return new Roles(Roles.USER);
-        }
-
-        @Override
-        protected boolean authenticate(String username, String password) {
-            return true;
-        }
     }
 
     public static void main(String[] args) throws Exception {
