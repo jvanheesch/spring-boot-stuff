@@ -1,8 +1,14 @@
 package com.github.jvanheesch.boot;
 
+import org.apache.wicket.Session;
+import org.apache.wicket.injection.Injector;
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.protocol.http.WebApplication;
+import org.apache.wicket.protocol.http.WebSession;
 import org.apache.wicket.protocol.http.WicketFilter;
+import org.apache.wicket.request.Request;
+import org.apache.wicket.request.Response;
+import org.apache.wicket.spring.injection.annot.SpringBean;
 import org.apache.wicket.spring.injection.annot.SpringComponentInjector;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -57,11 +63,39 @@ public class WicketApplication extends WebApplication {
     }
 
     @Bean
+    @SessionScope
+    public Supplier<String> sessionScopeString2() {
+        System.out.println("WicketApplication.sessionScopeString2");
+
+        return () -> "sessionScopeString2";
+    }
+
+    @Bean
     public Supplier<String> singletonScopeString() {
         System.out.println("WicketApplication.singletonScopeString");
 
         Object o = new Object();
         return o::toString;
+    }
+
+    @Override
+    public Session newSession(Request request, Response response) {
+        return new MyWebSession(request);
+    }
+
+    private static class MyWebSession extends WebSession {
+        private static final long serialVersionUID = -1776890521228839052L;
+
+        @SpringBean(name = "sessionScopeString2")
+        private Supplier<String> sessionScopeString2;
+
+        public MyWebSession(Request request) {
+            super(request);
+
+            Injector.get().inject(this);
+
+            System.out.println("sessionScopeString2: " + sessionScopeString2.get());
+        }
     }
 
     public static void main(String[] args) throws Exception {
