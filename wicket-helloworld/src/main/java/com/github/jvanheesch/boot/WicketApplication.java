@@ -6,6 +6,7 @@ import org.apache.wicket.protocol.http.WebApplication;
 import org.apache.wicket.protocol.http.WicketFilter;
 import org.apache.wicket.request.Request;
 import org.apache.wicket.request.Response;
+import org.apache.wicket.spring.SpringWebApplicationFactory;
 import org.apache.wicket.spring.injection.annot.SpringComponentInjector;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -33,9 +34,10 @@ public class WicketApplication extends WebApplication {
         FilterRegistrationBean<WicketFilter> registration = new FilterRegistrationBean<>();
         registration.setName("WicketApplication");
         registration.setFilter(new WicketFilter());
+        registration.addUrlPatterns("/*");
         registration.addInitParameter("applicationClassName", WicketApplication.class.getName());
         registration.addInitParameter(WicketFilter.FILTER_MAPPING_PARAM, "/*");
-        registration.addUrlPatterns("/*");
+        registration.addInitParameter("applicationFactoryClassName", SpringWebApplicationFactory.class.getName());
         return registration;
     }
 
@@ -45,7 +47,12 @@ public class WicketApplication extends WebApplication {
         System.out.println("WicketApplication.requestScopeObject");
 
         Object o = new Object();
-        return o::toString;
+        return new Stringable() {
+            @Override
+            public String asString() {
+                return o.toString();
+            }
+        };
     }
 
     @Bean(name = "sessionScopeObject")
@@ -54,7 +61,12 @@ public class WicketApplication extends WebApplication {
         System.out.println("WicketApplication.sessionScopeObject");
 
         Object o = new Object();
-        return o::toString;
+        return new Stringable() {
+            @Override
+            public String asString() {
+                return o.toString();
+            }
+        };
     }
 
     @Bean(name = "singletonScopeObject")
@@ -62,7 +74,12 @@ public class WicketApplication extends WebApplication {
         System.out.println("WicketApplication.singletonScopeObject");
 
         Object o = new Object();
-        return o::toString;
+        return new Stringable() {
+            @Override
+            public String asString() {
+                return o.toString();
+            }
+        };
     }
 
     @Override
