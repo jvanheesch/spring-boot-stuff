@@ -8,6 +8,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
+import org.springframework.web.context.annotation.RequestScope;
+import org.springframework.web.context.annotation.SessionScope;
+
+import java.util.function.Supplier;
 
 @SpringBootApplication
 public class WicketApplication extends WebApplication {
@@ -32,6 +36,32 @@ public class WicketApplication extends WebApplication {
         registration.addInitParameter(WicketFilter.FILTER_MAPPING_PARAM, "/*");
         registration.addUrlPatterns("/*");
         return registration;
+    }
+
+    @Bean
+    @RequestScope
+    public Supplier<String> requestScopeString() {
+        System.out.println("WicketApplication.requestScopeString");
+
+        Object o = new Object();
+        return o::toString;
+    }
+
+    @Bean
+    @SessionScope
+    public Supplier<String> sessionScopeString() {
+        System.out.println("WicketApplication.sessionScopeString");
+
+        Object o = new Object();
+        return o::toString;
+    }
+
+    @Bean
+    public Supplier<String> singletonScopeString() {
+        System.out.println("WicketApplication.singletonScopeString");
+
+        Object o = new Object();
+        return o::toString;
     }
 
     public static void main(String[] args) throws Exception {
