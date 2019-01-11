@@ -10,6 +10,7 @@ import org.apache.wicket.request.Request;
 import org.apache.wicket.request.Response;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 import org.apache.wicket.spring.injection.annot.SpringComponentInjector;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
@@ -88,13 +89,18 @@ public class WicketApplication extends WebApplication {
 
         @SpringBean(name = "sessionScopeString2")
         private Supplier<String> sessionScopeString2;
+        @Value("${some.key}")
+        private String someKey;
+        @SpringBean
+        private MyProperties myProperties;
 
         public MyWebSession(Request request) {
             super(request);
 
             Injector.get().inject(this);
 
-            System.out.println("sessionScopeString2: " + sessionScopeString2.get());
+            System.out.println("someKey:" + someKey);
+            System.out.println("myProperties.getSomeKey(): " +myProperties.getSomeKey());
         }
     }
 
