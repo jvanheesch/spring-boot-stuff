@@ -21,12 +21,14 @@
         <module>profile-specific-autoconfiguration</module>
         <module>jersey</module>
         <module>wicket-helloworld</module>
+        <module>log4j</module>
     </modules>
 
     <properties>
         <java.language.version>8</java.language.version>
         <maven-compiler-plugin.version>3.7.0</maven-compiler-plugin.version>
         <jasypt-spring-boot-starter.version>2.1.0</jasypt-spring-boot-starter.version>
+        <spring-boot.version>2.1.1.RELEASE</spring-boot.version>
     </properties>
 
     <dependencyManagement>
