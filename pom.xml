@@ -8,7 +8,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.1.1.RELEASE</version>
+        <version>2.0.2.RELEASE</version>
     </parent>
 
     <groupId>com.github.jvanheesch.boot</groupId>
@@ -28,7 +28,7 @@
         <java.language.version>8</java.language.version>
         <maven-compiler-plugin.version>3.7.0</maven-compiler-plugin.version>
         <jasypt-spring-boot-starter.version>2.1.0</jasypt-spring-boot-starter.version>
-        <spring-boot.version>2.1.1.RELEASE</spring-boot.version>
+        <spring-boot.version>2.0.2.RELEASE</spring-boot.version>
     </properties>
 
     <dependencyManagement>
